@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  color: black; /* Ensure text color is visible */
+}
+
+:host([aria-selected="true"]) {
+  background-color: lightgray; /* Highlight selected options */
+}

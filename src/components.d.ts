@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CustomDropdown {
+        "debounceTime": number;
+    }
+    interface CustomOption {
+        "value": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +28,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCustomDropdownElement extends Components.CustomDropdown, HTMLStencilElement {
+    }
+    var HTMLCustomDropdownElement: {
+        prototype: HTMLCustomDropdownElement;
+        new (): HTMLCustomDropdownElement;
+    };
+    interface HTMLCustomOptionElement extends Components.CustomOption, HTMLStencilElement {
+    }
+    var HTMLCustomOptionElement: {
+        prototype: HTMLCustomOptionElement;
+        new (): HTMLCustomOptionElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +47,18 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "custom-dropdown": HTMLCustomDropdownElement;
+        "custom-option": HTMLCustomOptionElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CustomDropdown {
+        "debounceTime"?: number;
+    }
+    interface CustomOption {
+        "value"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +74,8 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "custom-dropdown": CustomDropdown;
+        "custom-option": CustomOption;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +83,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "custom-dropdown": LocalJSX.CustomDropdown & JSXBase.HTMLAttributes<HTMLCustomDropdownElement>;
+            "custom-option": LocalJSX.CustomOption & JSXBase.HTMLAttributes<HTMLCustomOptionElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

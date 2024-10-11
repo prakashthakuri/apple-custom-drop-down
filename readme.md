@@ -147,5 +147,3 @@ This `CustomDropdown` component provides flexibility with filtering, keyboard na
 - **Events**: Describes events like `selectOption` and `filterChange` that the component emits.
 - **Styling**: Guidance on styling the component using CSS.
 - **Keyboard Navigation**: Explanation of keyboard interactions.
-
-Feel free to customize the content or add more sections specific to your component's features!
